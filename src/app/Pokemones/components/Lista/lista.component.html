@@ -1,0 +1,15 @@
+<div *ngIf="pokemonEliminado else noEliminado">
+
+    <h3>Pokemon eliminado <small> {{pokemonEliminado}}</small></h3>
+</div>
+<ng-template  #noEliminado> 
+    <h3>No ha eliminado nada.</h3>
+</ng-template>
+<h3>Lista de pokemons</h3>
+
+
+<button (click)="agregarPokemon()" *ngIf="pokemonNombres2.length>0">Agregar Pokemon</button>
+<button (click)="eliminarUltimoPokemon()" *ngIf="pokemonNombres.length>0">Borar Ultimo Pokemon</button>
+<ul>
+    <li *ngFor="let pokemon of pokemonNombres">{{pokemon}} <button (click)="eliminarSeleccionado(pokemon)">eliminar</button></li>
+</ul>
