@@ -1,0 +1,28 @@
+<div class="pokemon-card">
+    <span class="hp"><strong>HP:</strong> {{pokemonData.base_stat}}</span>
+    
+    <div class="image">
+        <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/7.png" id="Imagen">
+    </div>
+    <div class="nameCard">
+        <h2 class="name">{{ pokemonData.name}}</h2>
+    </div>
+    <div class="type">
+        <p> {{ pokemonData.type }}</p>
+    </div>
+
+    <div class="stats">
+          <span class="stat" *ngFor="let stat of pokemonData.stats">
+            {{stat}}
+          </span>
+    </div> 
+    <div class="stats">
+        <span class="statNames">
+            <h4>Attack</h4>
+            <h4>Defense</h4>
+            <h4>Speed</h4>
+        </span>
+        
+  </div>    
+  </div>
+  

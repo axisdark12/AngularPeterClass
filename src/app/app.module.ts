@@ -3,8 +3,8 @@ import { BrowserModule, provideClientHydration } from '@angular/platform-browser
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { CounterModule } from './Contador/counter.module';
-import { PokemonesModule } from './Pokemones/pokemones.module';
+import { CounterModule } from './contador/counter.module';
+import { PokemonesModule } from './pokemones.module';
 
 @NgModule({
   declarations: [
@@ -14,11 +14,13 @@ import { PokemonesModule } from './Pokemones/pokemones.module';
     BrowserModule,
     AppRoutingModule,
     CounterModule,
-    PokemonesModule,
+    PokemonesModule
   ],
   providers: [
     provideClientHydration()
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+  
+}

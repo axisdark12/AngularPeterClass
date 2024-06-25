@@ -1,15 +1,28 @@
-<div *ngIf="pokemonEliminado else noEliminado">
-
-    <h3>Pokemon eliminado <small> {{pokemonEliminado}}</small></h3>
+<h3>Lista de Componentes</h3>
+<div *ngIf="pokemonEliminado; else noEliminado">
+    <h3>Pokemon eliminado: <small>{{pokemonEliminado}}</small></h3>
 </div>
-<ng-template  #noEliminado> 
-    <h3>No ha eliminado nada.</h3>
+
+<ng-template #noEliminado>
+    <h3>No ha eliminado nada</h3>
 </ng-template>
-<h3>Lista de pokemons</h3>
 
+<button *ngIf="pokemonNombres.length > 0" (click)="eliminarUltimoPokemon()">Eliminar el ultimo pokemon</button>
+<button (click)="agregarPokemon()">Añadir pokemon</button>
 
-<button (click)="agregarPokemon()" *ngIf="pokemonNombres2.length>0">Agregar Pokemon</button>
-<button (click)="eliminarUltimoPokemon()" *ngIf="pokemonNombres.length>0">Borar Ultimo Pokemon</button>
-<ul>
-    <li *ngFor="let pokemon of pokemonNombres">{{pokemon}} <button (click)="eliminarSeleccionado(pokemon)">eliminar</button></li>
+<ul class="list-group"> 
+    <li [ngClass]="{'list-group-item-primary':pokemon.hp >0 && pokemon.hp<=30,
+    'list-group-item-secondary':pokemon.hp >=31 && pokemon.hp<=50,
+    'list-group-item-danger':pokemon.hp >=51 && pokemon.hp<=100 }" class="list-group-item d-flex justify-content-between " *ngFor="let pokemon of Pokemones; let i = index">
+        <br>
+        <div >{{pokemon.nombre}}-{{pokemon.hp}}</div>
+         <div >
+        <button type="button" class="btn btn-danger" (click)="eliminar(i)">Eliminar</button>
+        <button type="button" class="btn btn-warning" (click)="editar(pokemon)">Editar</button>
+    </div>
+    </li>
 </ul>
+
+
+<pre>{{Pokemones | json}}</pre>
+
