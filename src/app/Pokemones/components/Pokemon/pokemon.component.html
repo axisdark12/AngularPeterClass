@@ -1,32 +1,34 @@
 <h4>{{pokemon.id == '' ? 'Agregar' : 'Modificar'}} Pokemon</h4>
 
-<form *ngIf="pokemon.id == ''" (ngSubmit)="modificarPokemon()">
-    <input type="text" [(ngModel)]="pokemon.nombre" name="nombre" placeholder="Nombre">
-    <input type="number" [(ngModel)]="pokemon.hp" name="hp" placeholder="HP">
-    <button type="submit" class="btn btn-primary">Agregar</button>
+<form *ngIf="pokemon.id == ''" (ngSubmit)="emisorPokemon()">
+    <input type="text" [(ngModel)]="pokemon.nombre" name="nombre" placeholder="Nombre" />
+    <input type="text" [(ngModel)]="pokemon.hp" name="hp" placeholder="HP" />
+    <button type="submit">Agregar</button>
 </form>
 <form *ngIf="pokemon.id != ''" (ngSubmit)="modificarPokemon()">
-  <input type="text" [(ngModel)]="pokemon.nombre" name="nombre" placeholder="Nombre">
-  <input type="number" [(ngModel)]="pokemon.hp" name="hp" placeholder="HP">
-  <button type="submit" class="btn btn-primary">Modificar</button>
+    <input type="text" [(ngModel)]="pokemon.nombre" name="nombre" placeholder="Nombre" />
+    <input type="text" [(ngModel)]="pokemon.hp" name="hp" placeholder="HP" />
+    <button type="submit">Modificar</button>
 </form>
 
-<!-- <h1>Nombre</h1>
+<!--
+<h1>Nombre</h1>
+
 <dl>
-  <dt>Nombre</dt>
-  <dd>{{ nombre }}</dd>
+    <dt>Nombre:</dt>
+    <dd>{{nombre}}</dd>
 
-  <dt>HP</dt>
-  <dd>{{ hp }}</dd>
+    <dt>HP</dt>
+    <dd>{{hp}}</dd>
 
-  <dt>Metodo</dt>
-  <dd>{{ getDescription() }}</dd>
+    <dt>Metodo:</dt>
+    <dd>{{getDescripcion()}}</dd>
 
-  <dt>Capitalizado</dt>
-  <dd>{{ nombreCapitalizado }}</dd>
+    <dt>Capitalizado:</dt>
+    <dd>{{NombreCapitalizado}}</dd>
 </dl>
-<button (click)="cambiarNombre()">Cambiar nombre</button>
+
+<button (click)="cambiarNombre()">Cambiar Nombre</button>
 <button (click)="cambiarHP()">Cambiar HP</button>
 <button (click)="reiniciar()">Reiniciar</button>
- -->
-
+-->

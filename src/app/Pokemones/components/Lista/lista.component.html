@@ -1,28 +1,22 @@
-<h3>Lista de Componentes</h3>
-<div *ngIf="pokemonEliminado; else noEliminado">
-    <h3>Pokemon eliminado: <small>{{pokemonEliminado}}</small></h3>
+<h3>Lista de Pokemones</h3>
+<div *ngIf="PokemonEliminado; else noEliminado">
+    <h3>Pokemon eliminado <small>{{PokemonEliminado}}</small></h3>
 </div>
-
 <ng-template #noEliminado>
-    <h3>No ha eliminado nada</h3>
+    <h3>No ha eliminado nada.</h3>
 </ng-template>
 
-<button *ngIf="pokemonNombres.length > 0" (click)="eliminarUltimoPokemon()">Eliminar el ultimo pokemon</button>
-<button (click)="agregarPokemon()">Añadir pokemon</button>
-
-<ul class="list-group"> 
-    <li [ngClass]="{'list-group-item-primary':pokemon.hp >0 && pokemon.hp<=30,
-    'list-group-item-secondary':pokemon.hp >=31 && pokemon.hp<=50,
-    'list-group-item-danger':pokemon.hp >=51 && pokemon.hp<=100 }" class="list-group-item d-flex justify-content-between " *ngFor="let pokemon of Pokemones; let i = index">
-        <br>
-        <div >{{pokemon.nombre}}-{{pokemon.hp}}</div>
-         <div >
-        <button type="button" class="btn btn-danger" (click)="eliminar(i)">Eliminar</button>
-        <button type="button" class="btn btn-warning" (click)="editar(pokemon)">Editar</button>
-    </div>
+<button *ngIf="pokemonNombres.length > 0" (click)="eliminarUltimoPokemon()">
+    Borrar el ultimo Pokemon</button>
+<ul class="list-group">
+    <li class="list-group-item d-flex justify-content-between" *ngFor="let pokemon of Pokemones; let i = index;"
+    [ngClass]="{'list-group-item-primary': pokemon.hp <= 30,
+     'list-group-item-secondary fw-bold': pokemon.hp>= 31 && pokemon.hp <= 50,
+      'list-group-item-danger': pokemon.hp >= 51}">
+        <div>{{pokemon.nombre}} - {{pokemon.hp}}</div>
+        <div>
+            <button type="button" class="btn btn-danger mx-2" (click)="eliminar(i)">Eliminar</button>
+            <button (click)="editar(pokemon)" type="button" class="btn btn-warning">Editar</button>
+        </div>
     </li>
 </ul>
-
-
-<pre>{{Pokemones | json}}</pre>
-

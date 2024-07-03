@@ -1,6 +1,7 @@
-import { Component, Input, Output, EventEmitter } from "@angular/core";
+import { Component, EventEmitter, Input, Output } from "@angular/core";
 import { Pokemon } from "../../interfaces/pokemon.interface";
-import { pokemonService } from "../../services/pokemon.services";
+import { PokemonService } from "../../services/pokemon.service";
+import { Router } from "@angular/router";
 
 @Component({
     selector: 'app-pokemones-lista',
@@ -9,46 +10,24 @@ import { pokemonService } from "../../services/pokemon.services";
 export class ListaComponent {
     //@Input() public Pokemones: Pokemon[] = [];
     @Output() public DeletePokemon: EventEmitter<number> = new EventEmitter();
-
     public pokemonNombres: string[] = ['Pikachu', 'Charmander'];
-    public pokemonEliminado?: string;
-    public pokemonNuevosLista: string[] = ['Squirtle', 'Bulbasaur', 'Charizard', 'Greninja', 'Juan'];
-
-    constructor(private Service:pokemonService){}
-    get Pokemones(): Pokemon[]{
-        return[...this.Service.PokemonesLista];
+    public PokemonEliminado?: string;
+    constructor(private Service: PokemonService, private router: Router) { }
+    get Pokemones(): Pokemon[] {
+        return [...this.Service.PokemonesLista];
     }
-
-    //* función eliminar pokemon
-    eliminarPokemon(pokemon: string) {
-        const index = this.pokemonNombres.indexOf(pokemon);
-        if (index > -1) {
-            this.pokemonEliminado = this.pokemonNombres.splice(index, 1)[0];
-        }
-    }
-    
-    //* función eliminar el último pokemon
     eliminarUltimoPokemon() {
-        this.pokemonEliminado = this.pokemonNombres.pop();
-    }
-    
-    //* función agregar pokemon
-    agregarPokemon() {
-        if (this.pokemonNuevosLista.length > 0) {
-            const nuevoPokemon = this.pokemonNuevosLista.shift();
-            if (nuevoPokemon) {
-                this.pokemonNombres.push(nuevoPokemon);
-            }
-        }
+        this.PokemonEliminado = this.pokemonNombres.pop();
     }
 
     eliminar(index: number) {
         //this.DeletePokemon.emit(index);
-        this.Service.eliminarPokemon(index)
+        this.Service.eliminarPokemon(index);
     }
 
-    editar (pokemon: Pokemon){
+    editar(pokemon: Pokemon) {
         this.Service.setPokemon(pokemon);
-        
+        //this.router.navigateByUrl('pokemones/crear');
+        this.router.navigate(['pokemones/crear', { id: pokemon.id }]);
     }
 }

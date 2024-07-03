@@ -1,0 +1,48 @@
+<h1>Formulario Basico</h1>
+<hr>
+<div class="row">
+    <div class="col">
+        <form [formGroup]="Formulario" (ngSubmit)="Guardar()" autocomplete="off">
+            <div class="row">
+                <label class="col-form-label">Producto</label>
+                <div>
+                    <input type="text" formControlName="nombre" class="form-control">
+                    <span *ngIf="isValid('nombre')" class="form-text text-danger">{{getFieldError('nombre')}}</span>
+                </div>
+            </div>
+            <div class="row">
+                <label class="col-form-label">Precio</label>
+                <div>
+                    <input type="number" class="form-control" formControlName="precio">
+                    <span *ngIf="isValid('precio')" class="form-text text-danger">{{getFieldError('precio')}}</span>
+                </div>
+            </div>
+            <div class="row">
+                <label class="col-form-label">Existencias</label>
+                <div>
+                    <input type="number" class="form-control" formControlName="existencia">
+                    <span *ngIf="isValid('existencia')"
+                        class="form-text text-danger">{{getFieldError('existencia')}}</span>
+                </div>
+            </div>
+            <div>
+                <button type="submit" class="btn btn-primary">Guardar</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col">
+        <span>Valid</span>
+        <pre>{{Formulario.valid | json}}</pre>
+        <span>Pristine</span>
+        <pre>{{Formulario.pristine | json}}</pre>
+        <span>Touched</span>
+        <pre>{{Formulario.touched | json}}</pre>
+        <span>Value</span>
+        <pre>{{Formulario.value | json}}</pre>
+        <span>Producto nombre</span>
+        <pre>{{Formulario.controls['nombre'].errors | json}}</pre>
+    </div>
+</div>

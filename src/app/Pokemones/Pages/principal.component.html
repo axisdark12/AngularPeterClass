@@ -1,16 +1,22 @@
 <h1>Pokemones Principal</h1>
 <hr>
-
 <div class="row">
     <div class="col">
-        <!-- <app-pokemones-lista [Pokemones]="PokemonesLista"(DeletePokemon)="eliminarPokemon($event)"></app-pokemones-lista> -->
+        <!--
+        <app-pokemones-lista [Pokemones]="PokemonesLista"
+            (DeletePokemon)="eliminarPokemon($event)"></app-pokemones-lista>
+        -->
         <app-pokemones-lista></app-pokemones-lista>
     </div>
     <div class="col">
-        <!-- <app-pokemones-pokemon (NewPokemon)="escucharPokemon($event)"></app-pokemones-pokemon> -->
+        <!--
+         <app-pokemones-pokemon (NewPokemon)="escucharPokemon($event)"></app-pokemones-pokemon>
+        -->
         <app-pokemones-pokemon></app-pokemones-pokemon>
     </div>
-    <!-- <div class="col">
-        < <app-pokemones-view></app-pokemones-view>
-    </div> -->
-</div> 
+</div>
+<div class="row">
+    <div class="col">
+        <app-view></app-view>
+    </div>
+</div>

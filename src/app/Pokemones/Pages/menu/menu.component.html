@@ -1,0 +1,14 @@
+<div class="row mt-2">
+    <div class="col-2">
+        <h3>Menú</h3>
+        <hr>
+        <ul class="list-group">
+            <li class="list-group-item" *ngFor="let item of LinksMenu" routerLinkActive="active"
+                [routerLink]="item.ruta" aria-current="true">{{item.titulo}}</li>
+            <!--<li class="list-group-item" routerLinkActive="active" routerLink="crear">Crear</li>-->
+        </ul>
+    </div>
+    <div class="col-10">
+        <router-outlet />
+    </div>
+</div>
